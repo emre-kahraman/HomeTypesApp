@@ -68,7 +68,10 @@ public class HomeService {
     }
 
     public Double getAllHomesAverageSquareMeter(){
-        return (getHouseAverageSquareMeter()+getSummerHouseAverageSquareMeter()+getVillaAverageSquareMeter())/3;
+        return ((getHouseAverageSquareMeter()*homeUtil.getHouseList().size())
+                +(getSummerHouseAverageSquareMeter()*homeUtil.getSummerHouseList().size())
+                +(getVillaAverageSquareMeter()*homeUtil.getVillaList().size()))
+                /(homeUtil.getHouseList().size()+homeUtil.getSummerHouseList().size()+homeUtil.getVillaList().size());
     }
 
     public List<Home> getHomesByRoomNumberAndSaloonNumber(int roomNumber, int saloonNumber){
